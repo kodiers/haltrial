@@ -1,0 +1,10 @@
+services:
+  db:
+    image: postgres:16.3
+    environment:
+      POSTGRES_PASSWORD: some1STRONGpassword_
+      POSTGRES_DB: haltrial
+    ports:
+      - "5566:5432"
+    volumes:
+      - ./data/:/var/lib/postgresql/data
