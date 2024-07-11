@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: haltrial
+  jpa:
+    properties:
+      hibernate:
+        order_inserts: true
+        order_updates: true
+        jdbc:
+          batch_size: 20
+          fetch_size: 150
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  jackson:
+    mapper:
+      accept-case-insensitive-enums: true
+    deserialization:
+      fail-on-unknown-properties: true
+  task:
+    scheduling:
+      pool:
+        size: 1
+logging:
+  level:
+    root: info
+  logback:
+    rollingpolicy:
+      max-file-size: 20MB
+  file:
+    path: logs
+    name: logs/haltrial.log
+---
+server:
+  port: 8087
+spring:
+  config:
+    activate:
+      on-profile:
+        - dev
+  datasource:
+    url: jdbc:postgresql://localhost:5566/haltrial
+    username: postgres
+    password: some1STRONGpassword_
+  flyway:
+    url: jdbc:postgresql://localhost:5566/haltrial
+    user: postgres
+    password: some1STRONGpassword_
+  jpa:
+    show-sql: true
