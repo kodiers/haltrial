@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS clients (
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    login VARCHAR NOT NULL UNIQUE,
+    first_name VARCHAR NOT NULL,
+    last_name VARCHAR NOT NULL,
+    patronymic VARCHAR NOT NULL,
+    birthday DATE NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE
+);
