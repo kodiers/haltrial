@@ -48,3 +48,5 @@ spring:
     password: some1STRONGpassword_
   jpa:
     show-sql: true
+  hazelcast:
+    config: hazelcast-client.xml
