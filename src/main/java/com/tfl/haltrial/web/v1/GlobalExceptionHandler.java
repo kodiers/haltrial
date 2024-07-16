@@ -1,5 +1,6 @@
 package com.tfl.haltrial.web.v1;
 
+import com.tfl.haltrial.services.exceptions.CannotSendMessageException;
 import com.tfl.haltrial.services.exceptions.InvalidRequestDataException;
 import com.tfl.haltrial.services.exceptions.ObjectNotFoundException;
 import com.tfl.haltrial.web.v1.dto.response.ErrorCode;
@@ -56,6 +57,12 @@ public class GlobalExceptionHandler {
         return makeErrorResponse(exception, ErrorCode.OBJECT_NOT_FOUND);
     }
 
+    @ExceptionHandler(value = CannotSendMessageException.class)
+    @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
+    public ResponseDto<ErrorData> handleCannotSendMessageException(CannotSendMessageException exception) {
+        return makeErrorResponse(exception, ErrorCode.INVALID_OBJECT_STATE);
+    }
+
     @ExceptionHandler(value = InvalidRequestDataException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseDto<ErrorData> handleInvalidRequestDataException(InvalidRequestDataException exception) {
@@ -79,6 +86,8 @@ public class GlobalExceptionHandler {
     public ResponseDto<ErrorData> handleAllExceptions(Exception exception) {
         return makeErrorResponse(exception, ErrorCode.UNKNOWN_ERROR);
     }
+
+
 
 
 }

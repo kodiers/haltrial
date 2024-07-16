@@ -38,4 +38,10 @@ public class ClientServiceImpl implements ClientService {
                 .build();
         return clientMapper.entityToDto(clientRepository.save(client));
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public boolean clientExists(String login) {
+        return clientRepository.existsByLogin(login);
+    }
 }

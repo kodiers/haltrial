@@ -8,3 +8,7 @@ services:
       - "5566:5432"
     volumes:
       - ./data/:/var/lib/postgresql/data
+  hazelcast:
+    image: hazelcast/hazelcast:5
+    ports:
+      - "5701:5701"

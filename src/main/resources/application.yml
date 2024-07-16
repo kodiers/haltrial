@@ -30,6 +30,9 @@ logging:
   file:
     path: logs
     name: logs/haltrial.log
+messaging:
+  properties:
+    queue-name: "message-queue"
 ---
 server:
   port: 8087
@@ -48,3 +51,5 @@ spring:
     password: some1STRONGpassword_
   jpa:
     show-sql: true
+  hazelcast:
+    config: hazelcast-client.xml

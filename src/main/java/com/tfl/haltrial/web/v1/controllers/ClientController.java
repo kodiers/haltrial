@@ -8,12 +8,10 @@ import com.tfl.haltrial.web.v1.dto.response.ClientData;
 import com.tfl.haltrial.web.v1.dto.response.ResponseDto;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("api/v1/client")
 public class ClientController {
 
     private final ClientService clientService;
@@ -24,7 +22,7 @@ public class ClientController {
         this.clientDtoToResponseData = clientDtoToResponseData;
     }
 
-    @PostMapping("api/v1/client")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseDto<ClientData> createClient(@RequestBody @Valid CreateClientRequestDto clientRequestDto) {
         ClientDto clientDto = clientService.createClient(clientRequestDto.getLogin(), clientRequestDto.getFirstName(),

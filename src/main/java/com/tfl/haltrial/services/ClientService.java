@@ -8,4 +8,6 @@ public interface ClientService {
 
     ClientDto createClient(String login, String firstName, String lastName, String patronymic, LocalDate birthday);
 
+    boolean clientExists(String login);
+
 }
