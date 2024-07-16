@@ -30,6 +30,9 @@ logging:
   file:
     path: logs
     name: logs/haltrial.log
+messaging:
+  properties:
+    queue-name: "message-queue"
 ---
 server:
   port: 8087
