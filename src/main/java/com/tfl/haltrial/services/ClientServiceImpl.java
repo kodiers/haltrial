@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -43,5 +45,11 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public boolean clientExists(String login) {
         return clientRepository.existsByLogin(login);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<ClientEntity> getClientsByLogins(Collection<String> logins) {
+        return clientRepository.findAllByLoginIn(logins);
     }
 }

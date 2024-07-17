@@ -32,6 +32,11 @@ dependencies {
     implementation("org.mapstruct:mapstruct:1.5.5.Final")
     // https://mvnrepository.com/artifact/com.hazelcast/hazelcast-spring
     implementation("com.hazelcast:hazelcast-spring:5.4.0")
+    // https://mvnrepository.com/artifact/net.javacrumbs.shedlock/shedlock-spring
+    implementation("net.javacrumbs.shedlock:shedlock-spring:5.13.0")
+    // https://mvnrepository.com/artifact/net.javacrumbs.shedlock/shedlock-provider-hazelcast
+    implementation("net.javacrumbs.shedlock:shedlock-provider-hazelcast4:5.13.0")
+
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("org.postgresql:postgresql")
